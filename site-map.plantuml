@@ -1,0 +1,90 @@
+@startuml
+left to right direction
+
+component [/] as home
+component [/a-propos] as a_propos
+component [/contact] as contact
+component [/inscription] as inscription
+component [/connexion] as connexion
+component [/logout] as logout
+component [/admin] as admin
+home -right-> a_propos
+home -right-> contact
+home -right-> inscription
+home -right-> connexion
+home -right-> logout
+home -right-> admin
+
+package "Avis" {
+    component [/avis] as avis
+    component [/avis/detail/{id}] as avis0
+    component [/avis/edit/{id}] as avis1
+    component [/avis/del/{id}] as avis2
+
+    avis --> avis0
+    avis --> avis1
+    avis --> avis2
+}
+
+package "Compte" {
+    component [/compte] as compte
+    component [/compte/mot-de-passe] as compte0
+    component [/compte/commandes] as compte1
+    component [/compte/commandes/{reference}] as compte2
+    component [/compte/adresses] as compte3
+    component [/compte/adresses/ajouter] as compte4
+    component [/compte/adresses/modifier/{id}] as compte5
+    component [/compte/adresses/supprimer/{id}] as compte6
+
+    compte --> compte0
+    compte --> compte1
+    compte --> compte2
+    compte --> compte3
+    compte --> compte4
+    compte --> compte5
+    compte --> compte6
+}
+
+package "Articles" {
+    component [/articles] as articles
+    component [/articles/{id}-{slug}] as articles0
+    component [/articles/{id}-{slug}] as articles1
+
+    articles --> articles0
+    articles --> articles1
+}
+
+package "Panier" {
+    component [/mon-panier] as panier
+    component [/panier/ajouter/{id}] as panier0
+    component [/panier/réduire/{id}] as panier1
+    component [/panier/supprimer/{id}] as panier2
+    component [/panier/supprimer] as panier3
+
+    panier --> panier0
+    panier --> panier1
+    panier --> panier2
+    panier --> panier3
+}
+
+package "Commande" {
+    component [/commande] as commande
+    component [/commande/recap] as commande0
+    component [/commande/checkout/{reference}] as commande1
+    component [/commande/valide/{stripeSession}] as commande2
+    component [/commande/echec/{stripeSession}] as commande3
+
+    commande --> commande0
+    commande --> commande1
+    commande --> commande2
+    commande --> commande3
+}
+
+
+home -right-> avis
+home -right-> compte
+home -right-> articles
+home -right-> panier
+home -right-> commande
+
+@enduml
