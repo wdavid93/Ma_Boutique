@@ -1,0 +1,27 @@
+@startuml
+actor       utilisateur
+collections login
+control     authentification
+database    mysql
+
+utilisateur -> login : se connecter
+login -> authentification : vérifier
+mysql -> authentification : renvoyer\nle mot de passe\nhaché et salé
+authentification -> login : authentifier\nl'utilisateur\n??? Session
+login -> utilisateur : ??? Session
+ 
+
+' entity      entity      as Foo4
+' boundary    boundary    as Foo2
+
+' collections collections as Foo6
+' queue       queue       as Foo7
+
+' Foo -> Foo1 : To actor
+' Foo -> Foo2 : To boundary
+' Foo -> Foo3 : To control
+' Foo -> Foo4 : To entity
+' Foo -> Foo5 : To database
+' Foo -> Foo6 : To collections
+' Foo -> Foo7: To queue
+@enduml
