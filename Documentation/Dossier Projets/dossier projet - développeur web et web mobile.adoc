@@ -1,3 +1,4 @@
+// asciidoctor-pdf -r asciidoctor-diagram --theme=dossier-projet-theme.yml --verbose '.\dossier projet - développeur web et web mobile.adoc'
 :doctype: book
 :chapter-signifier: Partie
 :doctitle: Dossier Projet: Développeur web et web Mobile
@@ -90,13 +91,132 @@ Nous avons échangé par messagerie privée Signal, géré le projet grâce à T
 
 === Présentation de l'entreprise
 
+L'entreprise "Ma boutique" est une boutique fictif créé dans le but de ce projet.
+
 === Résumé du projet
+
+Ce projet est mis en place afin de mettre en valeur les produits à vendre « Ma Boutique » grâce à ce site e-commerce. Il permet aussi aux différents clients d’effectuer une sélection selon la catégorie du produit, recherche en lignes. 
+Le site web à est mis en place pour permettre au client d’effectuer leur choix de produit dans un panier et de payer en ligne.
 
 === Objectif du site
 
+La mise en avant des produits sont les principales vocations de ce site. On doit pouvoir y entrer ses informations personnelles pour confirmer ses achats. On peut aussi en apprendre plus sur l'histoire de cette entreprise et contacter le vendeur. 
+
+===	Spécification fonctionnelle
+==== Front
+
+• Proposer les tendances des meilleures ventes.
+ 
+• Afficher les produits vendus.
+ 
+• Offrir un moyen d’acheter les produits.
+
+• Offrir un moyen de contacter le site par mail.
+
+==== Back
+
+• Mettre à jour les informations du site et uploader des photos grâce à une interface d’administration. 
+
+• Afficher les nombres de visiteurs et de visites sur le site, comptabilisés par mois. 
+
+• Recevoir les mails saisis par les visiteurs sur le formulaire de contact. 
+
+
+=== Spécification technique
+
+Le style a été développé a l’aide du framework CSS, bootstrap qui permet la responsivité, le site s’adapte au écran mobile et ordinateur.
+
+Le back-office utilise le bundle EasyAdmin.
+
+Le bundle EasyAdmin m’a permis de générer automatiquement toute l’interface d’administration de l’application. Il a suffit pour cela de configurer le bundle afin de lui indiquer quelles entités devaient être ouvertes à l’administration, et quelles actions du CRUD étaient autorisées sur celles-ci. 
+
+Les mails sont envoyés grâce à Mailjet. 
+
+Utilisateurs :
+
+Le visiteur anonyme est autorisé à consulter la partie vitrine du site. 
+L’administrateur peut se connecter au back office afin de modifier le contenu du site.
+
+J’ai intégré Symfony au projet, et créé les entités Doctrine responsables de la lecture et de l’écriture des données dans la base. Ceci a été réalisé grâce à l’utilitaire en ligne de commande de Symfony. 
+
+Une fois les entités créées, il m’a suffit de générer et d’exécuter une migration afin de modifier la structure de la base de données en accord avec le modèle précédemment établi. Doctrine est un ORM (Object Relational Mapper) permettant d’effectuer la lecture et l’écriture des données dans une base de données. 
+
+Pour cela, il repose sur son composant DBAL, permettant de faire l’interface avec la base. DBAL permet malgré tout d’utiliser des requêtes SQL traditionnelles pour interagir avec la base de données, mais propose également un système de query builder, moyen alternatif de générer des requêtes SQL offrant, entre autres, une protection contre les injections. 
+
+Les divers Repository sont des objets fournis par Doctrine pour chaque entité, permettant de récupérer les données liées à chacune d’entre elles dans la base. Ils permettent également de définir des méthodes pour exécuter des requêtes SQL personnalisées.
+ 
+Pour développeur ce site, j’ai choisi Symfony est l’un des Framework PHP, pour les raisons suivantes :  
+
+==== Grande flexibilité
+Symfony est l’un des Frameworks PHP les plus riches en fonctionnalités. Les deux avantages technologiques les plus remarquables de Symfony sont les bundles et les composants.
+ 
+Le bundle est presque la même chose qu’un plugin. Considérez-le comme un ensemble de fichiers (fichiers PHP, feuilles de style, JavaScripts, images) pour la mise en œuvre d’une fonctionnalité (par exemple, un blog, un panier d’achat, etc.). Le principal avantage des bundles est qu’ils sont découplés. Vous pouvez les reconfigurer et les réutiliser pour de nombreuses applications afin de réduire le coût global de développement.
+ 
+Les composants sont des fonctionnalités génériques qui réduisent les tâches de routine et permettent aux développeurs de se concentrer sur des fonctionnalités métier spécifiques. Il existe 30 composants Symfony utiles qui facilitent le processus de développement. Vous pouvez utiliser les composants de manière indépendante et ajouter vos propres modules personnalisés sans que l’architecture en pâtisse. Les composants Symfony peuvent également être utilisés de manière autonome dans d’autres frameworks (par exemple, Laravel) ou dans des solutions PHP simples.
+ 
+Les bundles et les composants permettent d’éliminer les dépendances strictes dans l’architecture. Moins vous avez de dépendances, plus il sera facile d’apporter des changements sans risquer de casser d’autres parties du système. Ainsi, vous pouvez adapter la solution à toutes les exigences et à tous les scénarios d’utilisateur pour créer une application hautement flexible. 
+
+==== Personnalisation
+Symfony offre de grandes caractéristiques et fonctionnalités de personnalisation pour les développeurs et les entreprises. 
+
+==== L’entreprise derrière la technologie
+Symfony est l’un des rares frameworks bénéficiant d’un support commercial. SensioLabs, l’entreprise-créateur et sponsor, contribue activement à sa réputation. Ils fournissent des tutoriels officiels et des certifications. Sur le site Web de l’entreprise, vous trouverez un calendrier des conférences à venir dans le monde entier. Cela montre l’ampleur et le sérieux de leurs intentions et de leurs convictions. 
+
+==== Une fiabilité éprouvée
+Symfony a prouvé sa fiabilité au fil du temps alors que de nombreux autres frameworks ont échoué. 
+
+==== Facile à utiliser
+Il existe une documentation complète et détaillée. Elle est considérée comme l’une des meilleures documentations parmi les autres frameworks PHP. Chaque composant est bien expliqué et simplifié par des exemples. De plus, il bénéficie également d’un grand soutien de la communauté. Il offre une configuration facile et un mécanisme de mise en cache pour améliorer les performances des applications. 
+
+==== Support à long terme
+Symfony est un framework stable et bien testé avec des mises à jour régulières. Les versions les plus récentes bénéficient d’un support à long terme et sont compatibles avec les versions plus récentes : jusqu’à 3 ans pour certaines versions.
+
+==== Grande communauté
+Symfony est un open-source, avec une grande communauté. Cela signifie que les experts et les amateurs de PHP du monde entier participent à l’amélioration du code pour tout le monde. Dans la communauté, les gens coopèrent les uns avec les autres. Ils créent de nouveaux composants, essaient de résoudre les problèmes apparus, ou aident les autres avec des conseils. 
+
+==== Une bonne documentation
+Une documentation incomplète ou obsolète est un problème pour de nombreuses technologies. La documentation de Symfony est considérée comme l’une des meilleures, comparée à la documentation des autres frameworks PHP. Elle est clairement écrite, bien structurée, fournie avec des eхamples, et mise à jour de version en version. Vous pouvez trouver une explication de chaque composant et du processus de développement dans son ensemble. 
+
+==== Extensible
+Tout dans le framework Symfony se représente comme un bundle. Chaque bundle a une fonctionnalité unique. Vous pouvez réutiliser le bundle dans d’autres projets et le partager avec la communauté également. C’est également l’une des raisons qui le rendent populaire auprès des développeurs. La meilleure partie est que vous pouvez changer ou modifier n’importe quoi, même le noyau du système sans reconfigurer le framework complet. Vous pouvez ajouter les fonctionnalités dont vous avez besoin et étendre les caractéristiques d’une application autant que vous le souhaitez.
+
+==== Les Cibles
+
+Ce site s'adresse au client du monde entier.
+
+==== Les Contenus
+
+Tout le contenu de ce projet (image, photos, logo, textes) son libre de droit et d’utilisation
+
+==== Echéance du projet
+
+Le projet se déroule du 1er aout 2022 au 31 aout 2022.
+
+==== Moyens alloués au projet
+
+Ce projet est réalisé seul. Pour cela les moyens technique mis en place pour une meilleure organisation est Trello
+
+==== Inventaire technique
+
+        Framework PHP Symfony
+        Moteur de Template Twig
+        Accès à la base de donnée par l'ORM Doctrine
+
+        Base de données MySql
+
+        Gestion de la base de données avec phpMyAdmin
+        
+        Serveur HTTP Apache
+        
+        Gestion du backup avec EasyAdmin
+        
+        Gestion du paiement avec stripe
+
+        Gestion d’envoi de mail avec Mailjet
+
+    	Gestion de la responsivité avec Framework CSS Bootstrap
+
 <<<
-
-
 
 Les commandes utilisées sont : 
 
@@ -109,6 +229,112 @@ php bin/console doctrine:migrations:migrate
 
 ----
 
+== Réalisation
+
+=== Mise en place de Easy Admin
+
+En Utilisant le site de symfony 
+( https://symfony.com/bundles/EasyAdminBundle/current/dashboards.html),
+J’ai pu comprendre le fonctionnement de Easy Admin et l’implémenter dans mon projet.
+
+==== Fichier de configuration DashboardController.php
+
+[source, php]
+----
+<?php
+
+namespace App\Controller\Admin;
+----
+//image:database-map.png[]
+== Démonstration d’achat de plusieurs produits sur le site
+
+=== Choix des produits
+
+Cette page affiche les produits et permet de filtrer les produits par catégorie.
+
+image:1_Choix_produit.png[]
+
+Nous avons sélection quelques produits pour la démonstration. 
+
+=== Panier
+
+Cette page, le panier, affiche les produits choisis afin d’être achetés.
+
+image:2_panier.png[]
+
+=== Validation du panier
+
+image:3_validation.png[]
+
+Cette page affiche le montant de la commande, et permet d’indiquer l’adresse de livraison et le choix du transporteur, ce qui rajoute un cout de livraison.
+
+=== Récapitulatif
+
+image:4_recapitulatif.png[]
+
+Cette page est un récapitulatif du montant de la commande et des frais de livraisons.
+Pour cette commande nous avons un montant de 541,90 Euro que nous devons retrouvez dans le site Stripe, rubrique paiements.
+//saut de page 
+<<< 
+
+=== Paiement avec le formulaire stripe 
+
+image:5_paiement_avec_module_stripe.png[]
+
+Cette page est fournie par Stripe, et on voit afficher la désignation des produits et les prix et le montant total, ce qui doit, après validation sur le bouton payer, être afficher dans le site Stripe rubrique paiement.
+
+=== Confirmation de la commande
+
+image:6_confirmation_ccommande.png[]
+
+Cette page s’affiche lorsque le paiement s’est bien effectué, nous irons vérifier sur le site de Stripe que les informations correspondent.
+
+=== Vérification du paiement sur le site Stripe.
+
+image:7_verification_paiement_dans_stripe.png[]
+
+Notre vérification montre bien que la ligne de notre commande est d’un montant de 541.90 Euro.
+Pour voir les détails, il faut cliquer sur la ligne ce qui affiche le détail de la commande. 
+
+=== Détail de la commande dans Stripe
+
+image:8_verification_detail_paiement_dans_stripe.png[]
+
+Dans le détail de la commande, nous avons les informations comme le montant, la date de paiement, le nom et le mail du client, et les informations sur les articles achetés. 
+
+== Veille sécurité
+=== Faille 
+==== Résumé
+
+Une vulnérabilité a été découverte dans Symfony. Elle permet à un attaquant de provoquer une injection de requêtes illégitimes par rebond (CSRF).
+Le composant de formulaire Symfony fournit un mécanisme de protection CSRF en utilisant un jeton aléatoire injecté dans le formulaire et en utilisant la session pour stocker et contrôler le jeton soumis par l'utilisateur.
+Lors de l'utilisation du FrameworkBundle, cette protection peut être activée ou désactivée avec la configuration. Si la configuration n'est pas précisée, par défaut, le mécanisme est activé tant que la session est activée.
+Dans un changement récent dans la façon dont la configuration est chargée, le comportement par défaut a été abandonné et, par conséquent, la protection CSRF n'est pas activée sous forme lorsqu'elle n'est pas explicitement activée, ce qui rend l'application sensible aux attaques CSRF.
+
+==== Solution
+
+Symfony a restauré la configuration par défaut pour activer la protection CSRF par défaut.
+(https://github.com/symfony/symfony/commit/f0ffb775febdf07e57117aabadac96fa37857f50)
+
+==== Documentation
+•	Bulletin de security Symfony du 29 Janvier 2022
+https://github.com/symfony/symfony/security/advisories/GHSA-vvmr-8829-6whx
+•	Référence CVE CVE-2022-23601
+http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-23601
+
+== Recherche Création EasyAdmin
+
+Pour ce projet, j’ai dû comprendre et faire des recherches sur la mise en place du module EasyAdmin
+
+=== Installation
+
+Pour installer EasyAdmin, il faut lancer la ligne de commande :
+php bin/console make:admin:dashboard
+
+=== Configuration du dashboard
+
+Dans mon projet j’ai appelé ce fichier DashboardController.php
+Ci-dessous, c’est un exemple pour comprendre comment on doit configurer le dashboard : 
 
 
 [plantuml, target=database-map, format=png]
@@ -209,7 +435,7 @@ avis "1..1" --> "0..n" product
 ----
 
 
-[plantuml, target=database-map, format=png]
+[plantuml, target=authentication-sequence, format=png]
 ----
 
 actor       utilisateur
