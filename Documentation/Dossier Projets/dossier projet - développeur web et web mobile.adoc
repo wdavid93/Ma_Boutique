@@ -1,0 +1,258 @@
+:doctype: book
+:chapter-signifier: Partie
+:doctitle: Dossier Projet: Développeur web et web Mobile
+:docdate: 06/09/2022
+:docupdate: 06/09/2022
+:imagesdir: images
+:icons: font
+:toc: auto
+:toclevels: 4
+:toc-title: Table des matières
+:pdf-style: Dossier-Projet
+:pdf-stylesdir: {docdir}
+:pdf-themesdir: {docdir}/themes
+:pdf-fontsdir: {docdir}/fonts
+= {doctitle}
+William David
+v1.0, 06/09/2022
+
+<<<
+// asciidoctor-pdf -r asciidoctor-diagram --theme=Dossier-Projet-theme.yml --verbose '.\dossier projet - développeur web et web mobile.adoc'
+
+:sectnums:
+== Présentation du projet
+
+=== Résumé du projet
+
+Le projet a été réalisé sur la période du 20 juin au 31 juillet, pour mon propre compte. 
+
+Il met en œuvre un site de commerce électronique de vente de vêtements, avec une vitrine, un catalogue de produits, un moteur de recherche, un système de notation, ainsi qu'un système paiement en ligne par carte bleue. 
+
+Le Framework web utilisé est le Framework PHP Symfony (https://symfony.com/), accompagné du module EasyAdmin (https://symfony.com/bundles/EasyAdminBundle/current/index.html) pour la gestion du Back-Office. +
+Le Responsive Design est mise en œuvre grâce à l'intégration du Framework CSS Bootstrap (https://getbootstrap.com/). +
+Les notifications par e-mail se grâce au service d'envoi d'e-mail Mailjet (https://www.mailjet.com/). +
+Le paiement en ligne est assuré par le service Stripe (https://stripe.com/en-fr).
+
+=== Liste des compétences du référentiel
+
+Chacune des compétences citées ci-dessous, relatives au protocole de la rédaction d’un projet, sont accompagnées de précisions sur les technologies abordées avant d’expliquer leur utilisation dans les parties suivantes.
+
+==== Maquetter une application
+
+La modélisation du projet a été réalisé avec l’outil en ligne https://www.draw.io/.
+
+==== Concevoir une base de données
+
+La conception de la base de données a été réalisé en suivant le modèle Entité-Relation de la méthode Merise.
+
+==== Mettre en place une base de données
+
+La création de la base de données relationnelle a été faite avec l'outil d'administration PhpMyAdmin. 
+
+La matérialisation des tables de données a été faite au travers de l'outil de gestion de version des structures des tables intégré à l'ORM Doctrine, qui génère des scripts de migration. 
+
+==== Développer une interface utilisateur
+
+L’interface utilisateur est été réalisée avec le moteur de Template Twig, intégré au Framework Symfony, et le Framework CSS Bootstrap. 
+
+==== Développer des composants d’accès de données
+
+Les composants d'accès aux données ont été réalisés en s'appuyant sur l'ORM Doctrine, intégré au Framework Symfony. La gestion des données au niveau du Back-Office a été intégrée au module EasyAdmin du Framework Symfony. 
+
+==== Développer des pages web en lien avec une base de données
+
+Les pages web ont été développé dans le cadre du Framework Symfony, grâce à l'association de l'ORM Doctrine et du moteur de template Twig qui permettent de composer rapidement des pages affichant les données provenant de la base de données. 
+
+==== Mettre en œuvre une solution de e-commerce
+
+La mise en œuvre du projet, s'appuyant sur une base de données MySql, le Framework PHP Symfony, intégrant le moteur de template Twig, auquel a été ajouté le module de gestion EasyAdmin, forme le squelette d'une solution de e-commerce.
+
+Le paiement en ligne a été mise en œuvre en s'appuyant sur le service Stripe.
+
+Une base de test avec avec des articles, des descriptions, des visuels libres de droit a été créé pour pouvoir présenter la solution. 
+
+==== Développer une application simple de mobilité numérique 
+
+La partie Front-Office du site a été entièrement réalisée avec le Framework CSS Bootstrap. Celui-ci depuis longtemps offre les fonctionnalités nécessaire au Responsive Design. 
+
+==== Utiliser l’anglais dans son activité professionnelle en informatique
+
+L'utilisation de l'anglais est la norme lors de la conception de programme informatique. Les Frameworks et langages de programmation utilisés ont pour base l'anglais et l'essentiel des tutoriels et documents techniques qui ont été utilisés pour la réalisation de ce projet sont en anglais.
+
+==== Actualiser et partager ses compétences en développement informatique
+
+La réalisation de ce projet a été pour moi l’occasion d’approfondir ce que j’avais vu en cours et de le transposer dans un autre langage.
+
+J'ai pu pour cela m'appuyer sur l'expérience d'un collaborateur freelance qui m'a guidé et conseiller lors de la réalisation de ce projet. +
+Nous avons échangé par messagerie privée Signal, géré le projet grâce à Trello, suivi les versions et les problèmes sur Github, et effectué du Pair-Programing grâce à GitLive ou en présentiel.
+
+== Cahier des charges
+
+=== Présentation de l'entreprise
+
+=== Résumé du projet
+
+=== Objectif du site
+
+<<<
+
+
+
+Les commandes utilisées sont : 
+
+[source, shell]
+----
+
+php bin/console make:entity {nom de la table}
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
+
+----
+
+
+
+[plantuml, target=database-map, format=png]
+----
+
+entity address {
+    id
+    user_id
+    name
+    firstname
+    lastname
+    company
+    address
+    postal
+    city
+    country
+    phone
+}
+
+
+entity carrier {
+    id
+    name
+    description
+    price
+}
+
+entity category {
+    id
+    name
+}
+
+entity order {
+    id
+    user_id
+    created_at
+    carrier_name
+    carrier_price
+    delivery
+    reference
+    stripe_session
+    state
+}
+
+entity order_details {
+    id
+    binded_order_id
+    product
+    quantity
+    price
+    total
+}
+
+entity product {
+    id
+    category_id
+    name
+    slug
+    image
+    subtitle
+    description
+    price
+    is_in_home
+}
+
+entity user {
+    id
+    email
+    roles
+    password
+    firstname
+    lastname
+}
+
+entity alert {
+    id
+    product_id
+    name
+}
+
+entity avis {
+    id
+    auteur
+    contenu
+    created_at
+    product
+}
+
+address "1..1" --> "0..n" user
+alert "1..1" --> "0..n" product
+order "1..1" --> "0..n" user
+order "1..1" --> "0..n" carrier
+order_details "1..1" --> "0..n" order
+product "1..1" --> "0..n" category
+avis "1..1" --> "0..n" user
+avis "1..1" --> "0..n" product
+
+----
+
+
+[plantuml, target=database-map, format=png]
+----
+
+actor       utilisateur
+collections login
+control     authentification
+database    mysql
+
+utilisateur -> login : se connecter
+login -> authentification : vérifier
+mysql -> authentification : renvoyer\nle mot de passe\nhaché et salé
+authentification -> login : authentifier\nl'utilisateur\n??? Session
+login -> utilisateur : ??? Session
+ 
+
+' entity      entity      as Foo4
+' boundary    boundary    as Foo2
+
+' collections collections as Foo6
+' queue       queue       as Foo7
+
+' Foo -> Foo1 : To actor
+' Foo -> Foo2 : To boundary
+' Foo -> Foo3 : To control
+' Foo -> Foo4 : To entity
+' Foo -> Foo5 : To database
+' Foo -> Foo6 : To collections
+' Foo -> Foo7: To queue
+
+----
+
+
+== Glossaire et Définitions
+Back-Office:: 
+CSS:: Cascading Style Sheets. Langage informatique de mise en forme de contenu HTML.
+Framework:: Ensemble de bibliothèques définissant un cadre de développement de logiciel.
+HTML:: Hypertext Markup Langage. Langage informatique à base de balises définissant la structure et le contenu d'une page web.
+IDE:: Integrated Development Environment. Interface de développement comprenant la coloration syntaxique, la détection d'erreur ou encore la mise en forme du code. 
+IHM:: Interface Homme Machine. L’ensemble des interfaces utilisées par un utilisateur humain pour communiquer avec la machine.
+ORM:: Object Relational Mapping. Bibliothèque logiciel d'accès à une base de données qui transforme les lignes de données en objet utilisable par le langage de programmation. 
+Responsive Design:: Ensemble de techniques permettant aux pages web de s'adapter à la taille des écrans sur lesquels elles s'affichent. 
+SGBDR:: System de Gestion de Base de Données Relationnelles.
+SQL:: Structured Query Language. Langage pour interroger les bases de données.
+URL:: Uniform Resource Locator. Adresse d’un site ou d’une page hypertexte sur internet
+UX:: User eXpérience. Expérience Utilisateur vécue dans la globalité de l’interaction avec le service, prenant en compte l'ergonomie, l'utilisabilité, l'impact émotionnel ressenti.
+Wireframe:: représentation sous forme de ligne du squelette d'une page web 
+Workflow:: processus d’automatisation des tâches d’une application

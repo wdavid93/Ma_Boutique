@@ -21,3 +21,6 @@
 
 .env
 .env.test
+.asciidoctor
+.vscode
+.DS_Store

@@ -1,0 +1,113 @@
+extends: default
+font:
+  catalog:
+    Julius:
+      normal: JuliusSansOne-Regular.ttf
+      bold: JuliusSansOne-Regular.ttf
+      italic: JuliusSansOne-Regular.ttf
+      bold_italic: JuliusSansOne-Regular.ttf
+    Gill:
+      normal: Gill-Sans-Light.ttf
+      bold: Gill-Sans.ttf
+      italic: Gill-Sans-Light-Italic.ttf
+      bold_italic: Gill-Sans-Light-Italic.ttf
+    Lato:
+      normal: Lato-Thin.ttf
+      bold: Lato-Light.ttf
+      italic: Lato-ThinItalic.ttf
+      bold_italic: Lato-LightItalic.ttf
+    Roboto:
+      normal: RobotoCondensed-Light.ttf
+      bold: RobotoCondensed-Regular.ttf
+      italic: RobotoCondensed-LightItalic.ttf
+      bold_italic: RobotoCondensed-Italic.ttf
+    M+ 1mn:
+      normal: mplus1mn-regular-subset.ttf
+      bold: mplus1mn-bold-subset.ttf
+      italic: mplus1mn-italic-subset.ttf
+      bold_italic: mplus1mn-bold_italic-subset.ttf
+page:
+  background-color: FFFFFF
+  layout: portrait
+  margin: [0.7in, 0.7in, 0.7in, 0.7in]
+  size: A4
+base:
+  line_height_length: 16
+  font:
+    color: 000000
+    family: Lato
+    style: bold
+    size: 14
+title_page:
+  background_image: image:e-commerce.jpg[]
+heading:
+  font-family: Julius
+abstract:
+  title:
+    font-family: Julius
+table:
+  caption:
+    font:
+      family: Gill
+      style: bold
+  background-color: $page-background-color
+  border-color: 333333
+  line_height_length: 13
+  font: 
+    color: 000000
+    family: Roboto
+    size: 10
+  head:
+    background-color: 69AAAF
+    font:
+      color: FFFFFF
+      family: Gill
+      style: bold
+  body:
+    stripe_background_color: EDF7F7
+  foot:
+    background-color: $table-head-background-color
+    font: 
+      style: $table-head-font-style
+      color: $table-head-font-color
+link:
+  font:
+    color: 333333
+    family: Roboto
+    size: $base-font-size
+header:
+  height: 0.75in
+  recto:
+    # columns: "<50% >50%"
+    left:
+      content: Dossier Projet - Développeur Web et Web Mobile
+    right:
+      content: William David
+  verso:
+    # columns: $header_recto_columns
+    left:
+      content: $header_recto_left_content
+    right:
+      content: $header_recto_right_content
+footer:
+  height: 0.75in
+  recto:
+    left:
+      content: "{section-or-chapter-title}"
+      # content: "{chapter-title}"
+    right:
+      content: "{page-number}"
+  verso:
+    left:
+      content: $footer-recto-left-content
+      # content: "{page-number} | {section-or-chapter-title}"
+    right:
+      content: $footer-recto-right-content
+      # content: $footer-recto-left-content
+role:
+    white:
+      font:
+        color: FFFFFF
+    red:
+      font:
+        color: E07510
