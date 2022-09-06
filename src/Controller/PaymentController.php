@@ -109,7 +109,7 @@ class PaymentController extends AbstractController
     }
 
     /**
-     * Commande annullée (clic sur retour dans la fenêtre)
+     * Commande annulée (clic sur retour dans la fenêtre)
      */
     // #[Route('/commande/echec/{stripeSession}', name: 'payment_fail')]
     /**
@@ -127,3 +127,7 @@ class PaymentController extends AbstractController
         ]);
     }
 }
+
+
+
+/////

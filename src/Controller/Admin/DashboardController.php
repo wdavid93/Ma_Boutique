@@ -32,13 +32,15 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('La Boot\'Ique');
+            ->setTitle('Ma Boutique'); // Titre du Back Office
 
     }
 
     public function configureMenuItems(): iterable
     {
+        // linkToDashboard permet de créer le home du menu
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
+        // linkToCrud permet de créer les menus en les reliant a une table
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
         yield MenuItem::linkToCrud('Catégories', 'fas fa-list', Category::class);
         yield MenuItem::linkToCrud('Produits', 'fas fa-tag', Product::class);
@@ -46,5 +48,10 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Commandes', 'fas fa-shopping-cart', Order::class); 
         yield MenuItem::linkToCrud('Avis', 'fas fa-desktop', Avis::class);      
         yield MenuItem::linkToCrud('Bannières', 'fas fa-desktop', Headers::class);
+        return [ // linkToRoute permet de créer un lien pour retourner au site
+            yield MenuItem::linkToRoute('Retour', 'fa fa-home', 'home')
+        ];
     }
 }
+
+

@@ -22,7 +22,7 @@
                         {# echo {{product.price}} ;#}
                         {# <p class="text-center fs-2 fw-bold">{{product.price}}€</p> #}
                         <a href="{{ path('add_to_cart', {id: product.id}) }}"class="btn btn-outline-success"><i class="bi bi-cart4"></i> </a>
-                        <a href="{{ path('add_to_cart', {id: product.id}) }}"class="btn btn-outline-success"><i class="bi bi-alarm"></i> </a>
+                        {# <a href="{{ path('add_to_cart', {id: product.id}) }}"class="btn btn-outline-success"><i class="bi bi-alarm"></i> </a> #}
                     </div>
                 </div>
             {% endfor %}

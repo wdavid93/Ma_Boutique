@@ -15,18 +15,18 @@
             <p>{{product.description}}</p>
         <a href="{{ path('add_to_cart', {id: product.id}) }}"class="btn btn-outline-success">Ajouter au panier</a>
        
-        	{# {% if app.user %} #}				
+        	{% if app.user %}				
 			
 			 <h4 class="text-muted my-5 text-center">
 				Votre avis compte...</h4>
 
 			{{ form_start(form, {'attr' : {'class' : 'col-md-7 mx-auto'}})}}
-			{{ form_row(form.auteur)}}
+			{{ form_row(form.auteur)}} 
 			{{ form_row(form.contenu)}}
 			<button class="btn btn-primary" type="submit">Poster</button>
 			{{ form_end(form)}}
 
-			{# {% endif %} #}
+			{% endif %}
 			
 			<h4 class="my-5 mx-auto text-muted text-center">Vos réactions...</h4>
 

@@ -22,18 +22,10 @@ class AvisCrudController extends AbstractCrudController
         return Avis::class;
     }
 
-    public function configureActions(Actions $actions): Actions 
-    {
-        return $actions
-            ->add('index', 'detail')
-            ;
-    }
-
-  
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('auteur','Auteur'),            
+            TextField::new('auteur','Auteur'), // Relis le champs auteur a une colonne Auteur            
             TextareaField::new('contenu')->hideOnIndex(),
             DateTimeField::new('created_at', 'Créée le')
         ];

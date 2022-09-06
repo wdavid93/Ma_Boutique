@@ -48,5 +48,19 @@ class ProductRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
         
     }
+    /**
+     * @return Product[] Returns an array of Product objects
+     */
 
+    public function findByIsInHome($value): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.name = :val')
+            ->setParameter('val', $value)
+            ->orderBy('p.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
