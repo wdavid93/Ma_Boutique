@@ -3,7 +3,7 @@
 :chapter-signifier: Partie
 :doctitle: Dossier Projet: Développeur web et web Mobile
 :docdate: 06/09/2022
-:docupdate: 06/09/2022
+:docupdate: 07/09/2022
 :imagesdir: images
 :icons: font
 :toc: auto
@@ -13,6 +13,7 @@
 :pdf-stylesdir: {docdir}
 :pdf-themesdir: {docdir}/themes
 :pdf-fontsdir: {docdir}/fonts
+:source-highlighter: pygments
 = {doctitle}
 William David
 v1.0, 06/09/2022
@@ -48,7 +49,7 @@ La conception de la base de données a été réalisé en suivant le modèle Ent
 
 ==== Mettre en place une base de données
 
-La création de la base de données relationnelle a été faite avec l'outil d'administration PhpMyAdmin. 
+La création de la base de données relationnelle a été faite avec l'outil d'administration phpMyAdmin. 
 
 La matérialisation des tables de données a été faite au travers de l'outil de gestion de version des structures des tables intégré à l'ORM Doctrine, qui génère des scripts de migration. 
 
@@ -680,7 +681,7 @@ En Utilisant le site de symfony (https://symfony.com/bundles/EasyAdminBundle/cur
 
 ==== Fichier de configuration DashboardController.php
 
-[source,php]
+[source, php]
 ----
 
 <?php
