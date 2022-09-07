@@ -1,3 +1,4 @@
+// asciidoctor-pdf -r asciidoctor-diagram --theme=dossier-projet-theme.yml --verbose '.\dossier projet - développeur web et web mobile.adoc'
 :doctype: book
 :chapter-signifier: Partie
 :doctitle: Dossier Projet: Développeur web et web Mobile
