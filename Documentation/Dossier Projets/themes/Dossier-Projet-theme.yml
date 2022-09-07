@@ -29,7 +29,7 @@ font:
 page:
   background-color: FFFFFF
   layout: portrait
-  margin: [0.7in, 0.7in, 0.7in, 0.7in]
+  margin: [1in, 1in, 1in, 1in]
   size: A4
 base:
   line_height_length: 16
@@ -76,7 +76,7 @@ link:
     family: Roboto
     size: $base-font-size
 header:
-  height: 0.75in
+  height: 1in
   recto:
     # columns: "<50% >50%"
     left:
@@ -90,7 +90,7 @@ header:
     right:
       content: $header_recto_right_content
 footer:
-  height: 0.75in
+  height: 1in
   recto:
     left:
       content: "{section-or-chapter-title}"
