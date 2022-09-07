@@ -966,12 +966,53 @@ Il gère aussi le cas si le paiement réussi (méthode paymentSuccess) ou échou
 
 En déléguant le paiement a Stripe, la sécurité est gérée totalement par ce module qui est stable et connais son domaine.
 
-
+<<<
 ==== Template de succès de paiement 
 
+[source, php]
+----
 
+{% extends 'base.html.twig' %}
+
+{% block title %}Ma commande - Ma Boutique{% endblock %}
+
+{% block body %}
+    <h2>Confirmation de votre commande</h2>
+    <p>
+        Bonjour {{order.user.firstname}} {{order.user.lastname}}, <br>
+        Nous vous remercions de votre commande n° <b>{{order.reference}}</b>.<br>
+        Une confirmation vient de vous être envoyé par mail. <br>
+    </p>
+    <hr>
+    <p>
+        Votre commande sera livrée par {{order.carrierName}} à l'adresse suivante: <br>
+        {{order.delivery|raw}}
+    </p>
+    <hr>
+    <p>
+        Pour suive votre commande, rendez-vous dans votre <a href="{{ path('account_orders') }}">compte</a>.
+    </p>
+{% endblock %}
+----
 ==== Template d’erreur de paiement	
 
+[source, php]
+----
+{% extends 'base.html.twig' %}
+
+{% block title %}Ma commande - Ma Boutique{% endblock %}
+
+{% block body %}
+    <h2>Annulation de votre commande</h2>
+    <p>
+        Bonjour {{order.user.firstname}} {{order.user.lastname}}, <br>
+        Votre paiement pour la commande n° <b>{{order.reference}}</b> n'a pas abouti.<br>
+    </p>
+    <hr>
+    <a class="btn btn-outline-success" href="{{ path('order') }}">Réessayer</a>
+{% endblock %}
+
+----
 == Démonstration d’achat de plusieurs produits sur le site
 
 === Choix des produits
@@ -1025,8 +1066,6 @@ image:7_verification_paiement_dans_stripe.png[align=center]
 Dans le détail de la commande, nous avons les informations comme le montant, la date de paiement, le nom et le mail du client, et les informations sur les articles achetés. 
 
 image:8_verification_detail_paiement_dans_stripe.png[align=center]
-
-=== ??? Autre ???
 
 == Veille sécurité
 === Faille 
