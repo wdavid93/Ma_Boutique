@@ -36,7 +36,7 @@ class ProductController extends AbstractController
             // $products = $repository->findBy(["id"=>"2"]);
             $products = $repository->findAll();
         }
-
+      //  var_dump($products);
         return $this->renderForm('product/index.html.twig', [
             'products' => $products,
             'form' => $form //,

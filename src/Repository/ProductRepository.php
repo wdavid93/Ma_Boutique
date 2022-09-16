@@ -52,7 +52,22 @@ class ProductRepository extends ServiceEntityRepository
      * @return Product[] Returns an array of Product objects
      */
 
-    public function findByIsInHome($value): array
+    public function findByShowTopVente($value): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.showTopVente = :val')
+            ->setParameter('val', $value)
+            ->orderBy('p.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    /**
+     * @return Product[] Returns an array of Product objects
+     */
+
+    public function findByName($value): array
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.name = :val')
@@ -62,5 +77,25 @@ class ProductRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+    }
+    
+    
+    /**
+     * @return Product[] Returns an array of Product objects
+     */
+    public function findByIsInHomeSql(): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT * FROM product p
+            WHERE p.isinhome = 1
+            ORDER BY p.id ASC
+            ';
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery();
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $resultSet->fetchAssociative();
     }
 }

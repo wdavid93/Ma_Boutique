@@ -23,18 +23,22 @@ class HomeController extends AbstractController
     public function index(ProductRepository $productRepository, HeadersRepository $headersRepository): Response
     {
        // (new Mailer)->sendMailDirect();
-        //$products = $productRepository->findByIsInHome('Manteau chaud');
+       //$products = $productRepository->findByName('Manteau chaud');
+        $products = $productRepository->findByShowTopVente(1);
+     //  $products = $productRepository->findByIsInHomeSql();
         //$cartProducts = $cart->getDetails();
-        $products = $productRepository->find(5);
-        // dump($products);
+       //$products = $productRepository->find('5');     
+        //$products = $productRepository->findAll();          
+       // var_dump($products);
         // dump($productRepository);
-        // print_r($products, true);
+        // print_r($products);
         // look for multiple Product objects matching the name, ordered by price
-        // $products = $productRepository->findBy(
-        //     ['name' => 'Manteau chaud'],
-        //     ['price' => 'ASC']
-        // );
+        //  $products = $productRepository->findBy(
+        //      ['isInHome' => '1'],
+        //      ['price' => 'ASC']
+        //  );
         $headers = $headersRepository->findAll();
+        //var_dump($headers);
         return $this->render('home/index.html.twig', [
             'carousel' => true,  //Le caroussel ne s'affiche que sur la page d'accueil (voir base.twig)
             'top_products' => $products,

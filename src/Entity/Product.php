@@ -65,17 +65,15 @@ class Product
      */
     private $category;
 
-    //#[ORM\Column(type: 'boolean')]
-    /*
-     * @ORM\Column(type="boolean")
-     */
-    private $isInHome;
-
-    
     /**
      * @ORM\OneToMany(targetEntity=Avis::class, mappedBy="product")
      */
     private $avis;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $showTopVente;
     public function __construct()
     {
         $this->avis = new ArrayCollection();
@@ -171,17 +169,17 @@ class Product
         return $this;
     }
 
-    public function getIsInHome(): ?bool
-    {
-        return $this->isInHome;
-    }
+    // public function getIsInHome(): ?int
+    // {
+    //     return $this->isInHome;
+    // }
 
-    public function setIsInHome(bool $isInHome): self
-    {
-        $this->isInHome = $isInHome;
+    // public function setIsInHome(int $isInHome): self
+    // {
+    //     $this->isInHome = $isInHome;
 
-        return $this;
-    }    
+    //     return $this;
+    // }    
     /**
      * @return Collection<int, Avis>
      */
@@ -208,6 +206,18 @@ class Product
                 $avi->setProduct(null);
             }
         }
+        return $this;
+    }
+
+    public function getShowTopVente(): ?int
+    {
+        return $this->showTopVente;
+    }
+
+    public function setShowTopVente(int $showTopVente): self
+    {
+        $this->showTopVente = $showTopVente;
+
         return $this;
     }
 }
