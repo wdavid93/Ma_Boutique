@@ -1692,18 +1692,59 @@ validation -> mysql : enregistrer\nle numéro\nde règlement
 validation -> log : enregistrer l'initiation d'un règlement
 validation -> utilisateur : afficher le formulaire Stripe
 utilisateur -> stripe : envoyer ses informations de paiement
+
+----
+
+====== Achat - paiement valide
+
+[plantuml, target=order-success-sequence, format=png, align=center]
+----
+
+skinparam actorStyle awesome
+
+actor       utilisateur
+collections catalogue
+collections article
+collections panier
+control     validation
+database    mysql
+entity      stripe
+queue       livraison
+queue       log
+
 stripe -[#green]> validation : OK - confirmer le paiement
 validation -[#green]> mysql : OK - enregistrer\nle paiement
-validation -[#green]> log : OK - enregistrer le paiement
+validation -[#green]> log : OK - consigner le paiement
 validation -[#green]> mysql : OK - enregistrer\nun préparation\nde commande
 validation -[#green]> livraison : OK - mettre en livraison
 validation -[#green]> utilisateur : OK - confirmer la prise en charge de la commande
+
+----
+
+====== Achat - paiement non valide
+
+[plantuml, target=order-fail-sequence, format=png, align=center]
+----
+
+skinparam actorStyle awesome
+
+actor       utilisateur
+collections catalogue
+collections article
+collections panier
+control     validation
+database    mysql
+entity      stripe
+queue       livraison
+queue       log
+
 stripe -[#red]> validation : FAIL - notifier de l'échec du paiement
 validation -[#red]> mysql : FAIL - enregistrer\nl'échec\nle paiement
-validation -[#red]> log : FAIL - enregistrer l'échec le paiement
+validation -[#red]> log : FAIL - consigner l'échec le paiement
 validation -[#red]> utilisateur : FAIL - notifier de l'échec du paiement
 
 ----
+
 
 ===== Avis
 
