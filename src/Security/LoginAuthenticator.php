@@ -46,10 +46,14 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
-            return new RedirectResponse($targetPath);
+            echo(" onAuthenticationSuccess  > $targetPath = $this->getTargetPath ");
+            var_dump($targetPath)
+            // return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->urlGenerator->generate('account'));
+        echo(" onAuthenticationSuccess  > redirecte ");
+
+        // return new RedirectResponse($this->urlGenerator->generate('account'));
     }
 
     protected function getLoginUrl(Request $request): string
